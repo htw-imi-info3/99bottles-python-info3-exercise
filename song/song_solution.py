@@ -2,7 +2,9 @@
 
 do_crates = True
 
-
+class BottleNumberFactory:
+    pass
+    
 class BottleNumber:
 
     @classmethod
