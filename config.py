@@ -1,9 +1,11 @@
+from song.song import Song as SongV1          # noqa: F401, E261
+# from song.song_solution import Song as SongV2  # noqa: F401, E261
 
 
 # Implementation: This can be used to switch to an alternate version in
 # song/__init__.py
-use_alternate_song_implementation = True
 
+Song = SongV1
 
 # Test Behaviour
 skip_not_implemented = True

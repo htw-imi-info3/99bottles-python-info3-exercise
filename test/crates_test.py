@@ -1,6 +1,5 @@
 import pytest  # noqa: F401
-from config import xfail_new_feature_crates # noqa: F401, E261
-from song import Song
+from config import Song, xfail_new_feature_crates # noqa: F401, E261
 from test.lyrics.whole_song_crates import song_lyrics, verses  # noqa: F401, E261
 
 

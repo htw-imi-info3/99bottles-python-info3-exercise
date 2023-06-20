@@ -1,6 +1,5 @@
 import pytest  # noqa: F401
-from config import xfail_changing, skip_not_implemented
-from song.song import Song
+from config import Song, xfail_changing, skip_not_implemented
 from test.lyrics.whole_song import song_lyrics
 
 

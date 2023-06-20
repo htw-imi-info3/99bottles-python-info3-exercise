@@ -1,7 +1,6 @@
 import pytest  # noqa: F401
-from song import Song
+from config import Song, xfail_changing, skip_not_implemented  # noqa: F401, E261
 from test.lyrics.whole_song import song_lyrics, verses  # noqa: F401, E261
-from config import xfail_changing, skip_not_implemented  # noqa: F401, E261
 
 
 test_original_verses = [86, 85, 15, 2, 1, 0]
