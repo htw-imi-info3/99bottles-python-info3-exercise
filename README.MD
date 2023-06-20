@@ -9,7 +9,7 @@ Assignment:
 - You can use [config.py](config.py) to switch off test skipping/xfailing altogether.
 
 Change:
-- Crates with 20 bottles each should be handled differently, as in [](test/lyrics/whole_song_crates.py)
+- Crates with 20 bottles each should be handled differently, as in [test/lyrics/whole_song_crates.py](test/lyrics/whole_song_crates.py)
 
 ## This exercise is inspired by the 
 - [99 bottles of beer kata](https://www.codewars.com/kata/99-bottles-of-beer-1/javascript)
