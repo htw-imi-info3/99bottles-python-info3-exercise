@@ -6,7 +6,7 @@ Assignment:
   which should return the respective single verse from the [whole song](test/lyrics/whole_song.py). 
 - If all verses are returned correctly, Song#song() returns the whole Song.
 - Tests are already there. 
-- You can use [config.py](config.py) to switch off test skipping/xfailing altogether.
+- You can use [config.py](config.py) to switch off test skipping/xfailing.
 
 Change:
 - Crates with 20 bottles each should be handled differently, as in [test/lyrics/whole_song_crates.py](test/lyrics/whole_song_crates.py)
