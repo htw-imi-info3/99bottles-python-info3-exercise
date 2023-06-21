@@ -3,22 +3,6 @@
 do_crates = True
 
 
-class BottleNumberFactory:
-    @staticmethod
-    def for_n(n):
-        if n == 0:
-            return NoBottles(n)
-        if n == 1:
-            return OneBottle(n)
-        if do_crates:
-            if n == 20:
-                return OneCrate(n)
-            if n % Crate.size == 0:
-                return Crate(n)
-
-        return BottleNumber(n)
-
-
 class BottleNumber:
 
     def __init__(self, n):
@@ -68,7 +52,7 @@ class NoBottles(BottleNumber):
         return BottleNumberFactory.for_n(99)
 
 
-class Crate(BottleNumber):
+class Crates(BottleNumber):
     size = 20
 
     def _quantity(self):
@@ -81,10 +65,26 @@ class Crate(BottleNumber):
         return "out"
 
 
-class OneCrate(Crate):
+class OneCrate(Crates):
     def _container(self):
         return "crate"
 
+
+class BottleNumberFactory:
+    bottle_map = [
+        [lambda n: n == 0, NoBottles],
+        [lambda n: n == 1, OneBottle],
+        [lambda n: n == 20, OneCrate],
+        [lambda n: n % Crates.size == 0, Crates]
+    ]
+    
+    @classmethod
+    def for_n(cls, n):
+        for predicate, bottles_class in cls.bottle_map:
+            if predicate(n):
+                return bottles_class(n)
+
+        return BottleNumber(n)
 
 class Song:
 
