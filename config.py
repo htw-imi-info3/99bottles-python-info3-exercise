@@ -8,6 +8,6 @@ from song.song import Song as SongV1          # noqa: F401, E261
 Song = SongV1
 
 # Test Behaviour
-skip_not_implemented = True
+skip_not_implemented = False
 xfail_changing = True
 xfail_new_feature_crates = True
