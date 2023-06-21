@@ -75,7 +75,8 @@ class BottleNumberFactory:
         [lambda n: n == 0, NoBottles],
         [lambda n: n == 1, OneBottle],
         [lambda n: n == 20, OneCrate],
-        [lambda n: n % Crates.size == 0, Crates]
+        [lambda n: n % Crates.size == 0, Crates],
+        [lambda n: True, BottleNumber]
     ]
     
     @classmethod
@@ -84,7 +85,6 @@ class BottleNumberFactory:
             if predicate(n):
                 return bottles_class(n)
 
-        return BottleNumber(n)
 
 class Song:
 
