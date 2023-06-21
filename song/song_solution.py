@@ -124,5 +124,6 @@ class Song:
         bn = BottleNumberFactory.for_n(n)
         result = f"{str(bn).capitalize()} of mate on the wall, " + \
                  f"{bn} of mate.\n" + \
-                 f"{bn.action()}, {bn.successor()} of mate on the wall.\n"
+                 f"{bn.action()}, " + \
+                 f"{bn.successor()} of mate on the wall.\n"
         return result
