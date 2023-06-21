@@ -1,5 +1,8 @@
 class Song():
     def verse(self, n):
+        
+        # now there are 3 examples. Find the similarities and 
+        # differences!
         if n == 85:
             return """\
 85 bottles of mate on the wall, 85 bottles of mate.
