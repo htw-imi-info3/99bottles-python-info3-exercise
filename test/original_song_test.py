@@ -11,7 +11,7 @@ Take one down and pass it around, 84 bottles of mate on the wall.
     assert Song().verse(85) == verse
 
 
-@pytest.mark.skipif(skip_not_implemented, reason="not yet implemented")
+@pytest.mark.skipif(False, reason="not yet implemented")
 def test_86():
     verse = """\
 86 bottles of mate on the wall, 86 bottles of mate.
