@@ -2,13 +2,10 @@
 
 do_crates = True
 
-class BottleNumberFactory:
-    pass
-    
-class BottleNumber:
 
-    @classmethod
-    def for_n(cls, n):
+class BottleNumberFactory:
+    @staticmethod
+    def for_n(n):
         if n == 0:
             return NoBottles(n)
         if n == 1:
@@ -21,11 +18,14 @@ class BottleNumber:
 
         return BottleNumber(n)
 
+
+class BottleNumber:
+
     def __init__(self, n):
         self.n = n
 
     def successor(self):
-        return BottleNumber.for_n(self.n - 1)
+        return BottleNumberFactory.for_n(self.n - 1)
 
     def __str__(self):
         return f"{self._quantity()} {self._container()}"
@@ -93,7 +93,7 @@ class Song:
         return "\n".join(verses)
 
     def verse(self, n):
-        bn = BottleNumber.for_n(n)
+        bn = BottleNumberFactory.for_n(n)
         result = f"{str(bn).capitalize()} of mate on the wall, " + \
                  f"{bn} of mate.\n" + \
                  f"{bn.action()}, {bn.successor()} of mate on the wall.\n"
