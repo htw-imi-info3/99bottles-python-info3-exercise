@@ -5,6 +5,10 @@ do_crates = True
 
 class BottleNumber:
 
+    @staticmethod
+    def class_for(n):
+        return True
+
     def __init__(self, n):
         self.n = n
 
@@ -31,16 +35,11 @@ class BottleNumber:
         return "down"
 
 
-class OneBottle(BottleNumber):
-
-    def _pronoun(self):
-        return "it"
-
-    def _container(self):
-        return "bottle"
-
-
 class NoBottles(BottleNumber):
+
+    @staticmethod
+    def class_for(n):
+        return n == 0
 
     def _quantity(self):
         return "no more"
@@ -52,8 +51,25 @@ class NoBottles(BottleNumber):
         return BottleNumberFactory.for_n(99)
 
 
+class OneBottle(BottleNumber):
+
+    @staticmethod
+    def class_for(n):
+        return n == 1
+
+    def _pronoun(self):
+        return "it"
+
+    def _container(self):
+        return "bottle"
+
+
 class Crates(BottleNumber):
     size = 20
+
+    @classmethod
+    def class_for(cls, n):
+        return n > cls.size and n % cls.size == 0
 
     def _quantity(self):
         return str(int(self.n/self.size))
@@ -66,24 +82,36 @@ class Crates(BottleNumber):
 
 
 class OneCrate(Crates):
+    @classmethod
+    def class_for(cls, n):
+        return n == cls.size
+
     def _container(self):
         return "crate"
 
 
 class BottleNumberFactory:
-    bottle_map = [
-        [lambda n: n == 0, NoBottles],
-        [lambda n: n == 1, OneBottle],
-        [lambda n: n == 20, OneCrate],
-        [lambda n: n % Crates.size == 0, Crates],
-        [lambda n: True, BottleNumber]
-    ]
-    
+
+    classes = []
+
+    @classmethod
+    def register(cls, bottle_number_class):
+        cls.classes.insert(0, bottle_number_class)
+
     @classmethod
     def for_n(cls, n):
-        for predicate, bottles_class in cls.bottle_map:
-            if predicate(n):
-                return bottles_class(n)
+        for bottle_number_class in cls.classes:
+            if bottle_number_class.class_for(n):
+                return bottle_number_class(n)
+
+
+BottleNumberFactory.register(BottleNumber)
+BottleNumberFactory.register(NoBottles)
+BottleNumberFactory.register(OneBottle)
+
+if do_crates:
+    BottleNumberFactory.register(Crates)
+    BottleNumberFactory.register(OneCrate)
 
 
 class Song:
