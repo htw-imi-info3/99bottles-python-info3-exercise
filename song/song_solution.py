@@ -65,7 +65,7 @@ class NoBottles(BottleNumber):
         return "Go to the store and buy some more"
 
     def successor(self):
-        return BottleNumber.for_n(99)
+        return BottleNumberFactory.for_n(99)
 
 
 class Crate(BottleNumber):
